@@ -2,12 +2,13 @@ let attractor
 let a
 let allPlanets
 let allAttractors
+let noOfPlanets = 200
 let G = 1 
 let R = 5000 //Radius Constant ( Handle in how much raidus planets will revolute)
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
-  allPlanets = new Array(200).fill().map(()=>new Planet(random(innerWidth), random(innerHeight)))
+  allPlanets = new Array(noOfPlanets).fill().map(()=>new Planet(random(innerWidth), random(innerHeight)))
   allAttractors = []
 }
 
@@ -37,7 +38,7 @@ function draw() {
 function mousePressed(){
   let found = false
   allAttractors.forEach((attractor)=>{
-    if (dist(attractor.position.x, attractor.position.y, mouseX, mouseY)<attractor.radius-20) {
+    if (dist(attractor.position.x, attractor.position.y, mouseX, mouseY)<attractor.radius-20 && attractor.visible) {
       attractor.grabbed = true
       found = true
     }
